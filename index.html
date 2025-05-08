@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guest Satisfaction Analysis | Hunters Paradise Cottages</title>
+    <style>
+      :root {
+        --dark-brown: #432a17;
+        --orange: #e87a22;
+        --light-tan: #f8f1e7;
+        --white: #ffffff;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+
+      body {
+        background-color: var(--light-tan);
+        color: var(--dark-brown);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      header {
+        background-color: var(--white);
+        box-shadow: var(--shadow);
+        padding: 20px 0;
+        margin-bottom: 40px;
+        background-image: linear-gradient(
+          to right,
+          var(--white) 60%,
+          rgba(232, 122, 34, 0.1)
+        );
+      }
+
+      .logo-container {
+        text-align: center;
+        padding: 20px 0;
+        background-color: var(--white);
+        border-radius: 12px;
+        margin-bottom: 30px;
+        height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(67, 42, 23, 0.1);
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: var(--dark-brown);
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      h1 {
+        font-size: 2.8rem;
+        text-align: center;
+        margin-bottom: 10px;
+        letter-spacing: -0.5px;
+      }
+
+      h2 {
+        font-size: 2rem;
+        border-bottom: 3px solid var(--orange);
+        padding-bottom: 12px;
+        margin-top: 50px;
+        letter-spacing: -0.3px;
+      }
+
+      .subtitle {
+        text-align: center;
+        color: var(--orange);
+        font-size: 1.3rem;
+        margin-bottom: 40px;
+        font-weight: 500;
+      }
+
+      .intro {
+        background-color: var(--white);
+        padding: 40px;
+        border-radius: 12px;
+        margin-bottom: 50px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(67, 42, 23, 0.05);
+      }
+
+      .visualization {
+        background-color: var(--white);
+        border-radius: 12px;
+        padding: 30px;
+        margin-bottom: 50px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(67, 42, 23, 0.05);
+        transition: var(--transition);
+      }
+
+      .visualization:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      }
+
+      .visualization img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 20px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        object-fit: contain;
+        max-height: 500px;
+      }
+
+      .viz-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 25px 0;
+      }
+
+      .viz-container img {
+        max-width: 100%;
+        max-height: 450px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .insights {
+        background-color: var(--white);
+        padding: 40px;
+        border-radius: 12px;
+        margin-bottom: 50px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(67, 42, 23, 0.05);
+      }
+
+      .insight-card {
+        background-color: var(--light-tan);
+        padding: 25px;
+        border-left: 5px solid var(--orange);
+        margin-bottom: 25px;
+        border-radius: 0 8px 8px 0;
+        transition: var(--transition);
+      }
+
+      .insight-card:hover {
+        transform: translateX(5px);
+      }
+
+      .insight-card h3 {
+        color: var(--orange);
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+      }
+
+      .viz-description {
+        background-color: rgba(232, 122, 34, 0.08);
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+        border-left: 3px solid var(--orange);
+      }
+
+      .viz-description h4 {
+        color: var(--orange);
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+      }
+
+      footer {
+        background-color: var(--dark-brown);
+        color: var(--white);
+        text-align: center;
+        padding: 40px 0;
+        margin-top: 80px;
+        background-image: linear-gradient(
+          to right,
+          var(--dark-brown) 40%,
+          rgba(67, 42, 23, 0.9)
+        );
+      }
+
+      .highlight {
+        color: var(--orange);
+        font-weight: 600;
+      }
+
+      p {
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+        line-height: 1.7;
+      }
+
+      .viz-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 25px;
+      }
+
+      .viz-title h2 {
+        border-bottom: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .viz-title .icon {
+        background-color: rgba(232, 122, 34, 0.2);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--orange);
+        font-size: 1.5rem;
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2.2rem;
+        }
+
+        h2 {
+          font-size: 1.6rem;
+        }
+
+        .visualization {
+          padding: 20px;
+        }
+
+        .viz-container img {
+          max-height: 350px;
+        }
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Guest Satisfaction Analysis</h1>
+        <p class="subtitle">January - April 2025 Performance Review</p>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="logo-container">
+        <img
+          src="img/brown.png"
+          alt="Hunters Paradise Cottages"
+          style="max-height: 100px"
+        />
+      </div>
+
+      <section class="intro">
+        <h2>Project Overview</h2>
+        <p>
+          This comprehensive analysis examines guest satisfaction across all
+          aspects of Hunters Paradise Cottages from January to April 2025. Using
+          data from over 15 different service categories, we've identified key
+          strengths, improvement opportunities, and emerging trends to
+          understand our guest experience landscape.
+        </p>
+      </section>
+
+      <section class="visualization">
+        <div class="viz-title">
+          <div class="icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h2>Overall Satisfaction Trends</h2>
+        </div>
+        <p>
+          Monthly breakdown of all satisfaction levels (Excellent to Poor)
+          across all service categories
+        </p>
+        <div class="viz-container">
+          <img
+            src="img/1.png"
+            alt="Line chart showing satisfaction trends over time"
+          />
+        </div>
+        <div class="viz-description">
+          <h4>What This Shows</h4>
+          <p>
+            The line chart reveals a steady upward trajectory in 'Excellent'
+            ratings across most categories since January, with particularly
+            strong gains in March. 'Very Good' ratings have remained
+            consistently high, forming the bulk of our satisfaction metrics.
+            Interestingly, 'Poor' ratings have nearly disappeared by April,
+            showing just 2 instances across all categories compared to 12 in
+            January.
+          </p>
+          <p>
+            The most notable movement appears in February, where we see a
+            temporary dip in 'Good' ratings coinciding with a spike in 'Very
+            Good' - suggesting guests were clustering at the higher end of the
+            satisfaction scale during this period.
+          </p>
+        </div>
+      </section>
+
+      <section class="visualization">
+        <div class="viz-title">
+          <div class="icon">
+            <i class="fas fa-wifi"></i>
+          </div>
+          <h2>Wi-Fi Connectivity Deep Dive</h2>
+        </div>
+        <p>
+          Detailed tracking of our most frequently mentioned improvement area
+        </p>
+        <div class="viz-container">
+          <img
+            src="img/2.png"
+            alt="Bar chart showing Wi-Fi satisfaction improvement"
+          />
+        </div>
+        <div class="viz-description">
+          <h4>What This Shows</h4>
+          <p>
+            Wi-Fi satisfaction tells a dramatic improvement story. In January,
+            only 6.7% of guests rated it 'Excellent', with 40% giving 'Average'
+            or below ratings. March shows a pivotal change - the month we
+            implemented new routers and boosters - with 'Excellent' jumping to
+            20% and 'Average' ratings halving.
+          </p>
+          <p>
+            By April, the transformation is clear: 'Excellent' ratings reached
+            33.3%, while negative ratings ('Poor' and 'Fair') completely
+            disappeared. The data shows Wi-Fi is transitioning from a pain point
+            to a strength, though still below our property-wide excellence
+            standards.
+          </p>
+        </div>
+      </section>
+
+      <section class="visualization">
+        <div class="viz-title">
+          <div class="icon">
+            <i class="fas fa-smile"></i>
+          </div>
+          <h2>Staff Friendliness Excellence</h2>
+        </div>
+        <p>Percentage of "Excellent" ratings for staff friendliness by month</p>
+        <div class="viz-container">
+          <img
+            src="img/3.png"
+            alt="Area chart showing staff friendliness ratings"
+          />
+        </div>
+        <div class="viz-description">
+          <h4>What This Shows</h4>
+          <p>
+            Staff friendliness maintains exceptional performance, starting
+            strong at 80% 'Excellent' in January and climbing to 87.5% by April.
+            The area chart shows remarkable consistency in this category, with
+            no month dipping below 80% excellence.
+          </p>
+          <p>
+            What's particularly interesting is the relationship between
+            friendliness scores and other service metrics. When we see spikes in
+            friendliness ratings (particularly in February and April),
+            corresponding lifts appear in restaurant service and activity
+            coordination ratings, suggesting friendly staff positively influence
+            perception of other services.
+          </p>
+        </div>
+      </section>
+
+      <section class="visualization">
+        <div class="viz-title">
+          <div class="icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <h2>Service Category Rankings</h2>
+        </div>
+        <p>
+          All service aspects ranked by weighted satisfaction score (5=Excellent
+          to 1=Poor)
+        </p>
+        <div class="viz-container">
+          <img
+            src="img/4.png"
+            alt="Horizontal bar chart showing service category rankings"
+          />
+        </div>
+        <div class="viz-description">
+          <h4>What This Shows</h4>
+          <p>
+            Bed Comfort leads all categories with a perfect 5.0 weighted score,
+            followed closely by Bathroom Cleanliness at 4.9. These physical
+            comfort metrics consistently outperform other aspects of the guest
+            experience.
+          </p>
+          <p>
+            At the other end, Pricing Satisfaction ranks lowest (3.8), though
+            showing steady improvement from its January position. Wi-Fi, despite
+            its improvements, still ranks in the bottom third of categories
+            (4.1), indicating room for continued enhancement. The middle tier
+            contains most of our activity and dining-related services, all
+            scoring between 4.3-4.6.
+          </p>
+        </div>
+      </section>
+
+      <section class="visualization">
+        <div class="viz-title">
+          <div class="icon">
+            <i class="fas fa-chart-bar"></i>
+          </div>
+          <h2>Wi-Fi Satisfaction Forecast</h2>
+        </div>
+        <p>3-month predictive forecast for Wi-Fi Excellent ratings</p>
+        <div class="viz-container">
+          <img
+            src="img/5.png"
+            alt="Forecast chart showing predicted Wi-Fi satisfaction"
+          />
+        </div>
+        <div class="viz-description">
+          <h4>What This Shows</h4>
+          <p>
+            The forecast model predicts continued growth in Wi-Fi satisfaction
+            if current trends persist. Based on the April trajectory, we can
+            expect 'Excellent' ratings to reach approximately 42-45% by July,
+            which would place Wi-Fi in our top half of service categories.
+          </p>
+          <p>
+            The confidence interval (shaded area) shows a range of possible
+            outcomes, with the lower bound suggesting a floor of about 38%
+            'Excellent' ratings even if growth slows slightly. This projection
+            assumes no additional infrastructure investments beyond what's
+            already planned.
+          </p>
+        </div>
+      </section>
+
+      <section class="visualization">
+        <div class="viz-title">
+          <div class="icon">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <h2>Service Aspect Correlations</h2>
+        </div>
+        <p>
+          Relationships between different service categories' Excellent ratings
+        </p>
+        <div class="viz-container">
+          <img
+            src="img/6.png"
+            alt="Heatmap showing service category correlations"
+          />
+        </div>
+        <div class="viz-description">
+          <h4>What This Shows</h4>
+          <p>
+            The correlation heatmap reveals fascinating relationships between
+            service aspects. Restaurant Service Quality (0.87) and Activity
+            Coordination (0.83) show the strongest correlations with Staff
+            Friendliness, suggesting guests perceive these services as
+            interconnected experiences.
+          </p>
+          <p>
+            Interestingly, Wi-Fi satisfaction shows moderate correlation (0.65)
+            with Overall Value perception, indicating that improved connectivity
+            may positively influence guests' sense of getting good value. Bed
+            Comfort and Bathroom Cleanliness, while scoring highest, show
+            relatively low correlations with other services (0.2-0.4 range),
+            suggesting they're evaluated more independently by guests.
+          </p>
+        </div>
+      </section>
+
+      <section class="insights">
+        <h2>Key Insights</h2>
+
+        <div class="insight-card">
+          <h3>Consistent Strengths</h3>
+          <p>
+            Bed Comfort and Bathroom Cleanliness have maintained perfect or
+            near-perfect scores throughout the period. These physical aspects of
+            the guest experience appear to be reliably excellent, with Bed
+            Comfort achieving 100% Excellent ratings in January and February
+            before receiving a single 'Very Good' rating in March and April.
+            This consistency suggests our housekeeping and facilities
+            maintenance protocols are exceptionally effective.
+          </p>
+        </div>
+
+        <div class="insight-card">
+          <h3>Most Improved</h3>
+          <p>
+            Wi-Fi Connectivity has undergone a remarkable transformation. From
+            being our lowest-rated service in January (6.7% Excellent) to
+            achieving 33.3% Excellent by April, the improvement curve is one of
+            the steepest we've observed. The timing aligns perfectly with our
+            March infrastructure upgrades, showing immediate positive impact
+            that continued to grow in the following month. Negative ratings
+            disappeared completely by April, suggesting we've addressed the most
+            severe connectivity issues.
+          </p>
+        </div>
+
+        <div class="insight-card">
+          <h3>Attention Needed</h3>
+          <p>
+            Pricing satisfaction, while improving from 25% Excellent in January
+            to 62.5% in April, remains our lowest-scoring category. The data
+            shows guests are responding positively to our value-added packages
+            introduced in February, but there's still a perception gap compared
+            to other aspects of the experience. Interestingly, pricing
+            satisfaction shows stronger correlation with intangible services
+            (like staff interactions) than with physical amenities.
+          </p>
+        </div>
+
+        <div class="insight-card">
+          <h3>Strong Correlations</h3>
+          <p>
+            The 0.87 correlation between Restaurant Service Quality and Staff
+            Friendliness is among the strongest relationships in our data. This
+            suggests guests don't silo their perceptions of service quality by
+            department, but rather form holistic impressions that carry across
+            different interactions. Similarly, the 0.83 correlation between
+            Activity Coordination and Friendliness indicates that well-organized
+            activities enhance perceptions of staff warmth and approachability.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Hunters Paradise Cottages | Guest Experience Analysis</p>
+        <p>
+          Data analyzed from January to April 2025 guest satisfaction surveys
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
