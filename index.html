@@ -281,7 +281,14 @@
           aspects of Hunters Paradise Cottages from January to April 2025. Using
           data from over 15 different service categories, we've identified key
           strengths, improvement opportunities, and emerging trends to
-          understand our guest experience landscape.
+          understand our guest experience landscape. For more technical analysis
+          click
+          <strong>
+            <a
+              href="https://github.com/jakkkc/customer_feedback_april_25/blob/main/index.ipynb"
+              >here</a
+            ></strong
+          >
         </p>
       </section>
 
@@ -305,19 +312,27 @@
         <div class="viz-description">
           <h4>What This Shows</h4>
           <p>
-            The line chart reveals a steady upward trajectory in 'Excellent'
-            ratings across most categories since January, with particularly
-            strong gains in March. 'Very Good' ratings have remained
-            consistently high, forming the bulk of our satisfaction metrics.
-            Interestingly, 'Poor' ratings have nearly disappeared by April,
-            showing just 2 instances across all categories compared to 12 in
-            January.
+            This bar chart shows how guests rated
+            their experience each month, categorized into five levels:
+            Excellent, Very Good, Good, Average, and Poor.
           </p>
           <p>
-            The most notable movement appears in February, where we see a
-            temporary dip in 'Good' ratings coinciding with a spike in 'Very
-            Good' - suggesting guests were clustering at the higher end of the
-            satisfaction scale during this period.
+            <ul>
+                <li> <strong>January:</strong> Most guests rated their stay as Excellent (about 60%), with Very Good and Good following at around 20% and 10%, respectively. Only a small number gave Average or Poor rating
+                </li>
+                <li> <strong>February:</strong> There was a big jump in Excellent ratings, rising to about 80%, while Very Good decreased to 10% and Good slightly dropped. Average and Poor remained very low.
+                </li>
+                <li><strong>March & April:</strong> The trend stayed strong with Excellent ratings around 70%, while Very Good climbed slightly. Good, Average, and Poor remained consistently low.
+                </li>
+            </ul>
+          </p>
+          <h4>What it Means</h4>
+          <p>
+            <ul><li><strong>Consistent high satisfaction: </strong>The majority of guests are very happy with their stay.
+            </li><li><strong>February’s spike:</strong> Something must have improved or changed to create a surge in top ratings.
+            </li><li><strong>Minor fluctuations: </strong>While there are some shifts, the overall satisfaction remains overwhelmingly positive.
+            </li>
+        </ul>
           </p>
         </div>
       </section>
@@ -341,18 +356,13 @@
         <div class="viz-description">
           <h4>What This Shows</h4>
           <p>
-            Wi-Fi satisfaction tells a dramatic improvement story. In January,
-            only 6.7% of guests rated it 'Excellent', with 40% giving 'Average'
-            or below ratings. March shows a pivotal change - the month we
-            implemented new routers and boosters - with 'Excellent' jumping to
-            20% and 'Average' ratings halving.
+            This line graph tracks Wi-Fi Connectivity Satisfaction over four the 1st quater. 
           </p>
           <p>
-            By April, the transformation is clear: 'Excellent' ratings reached
-            33.3%, while negative ratings ('Poor' and 'Fair') completely
-            disappeared. The data shows Wi-Fi is transitioning from a pain point
-            to a strength, though still below our property-wide excellence
-            standards.
+            <ul><li><strong>March’s spike: </strong>Something improved dramatically in Wi-Fi performance, leading to a surge in top ratings.
+            </li><li><strong>Overall satisfaction is good:</strong>Even though there were some ups and downs, most guests were happy with the Wi-Fi experience.
+            </li><li><strong>Insights for improvement:</strong>If February showed weaker results, the team can look into what caused that dip to prevent similar issues in the future.
+            </li></ul>
           </p>
         </div>
       </section>
@@ -374,18 +384,13 @@
         <div class="viz-description">
           <h4>What This Shows</h4>
           <p>
-            Staff friendliness maintains exceptional performance, starting
-            strong at 80% 'Excellent' in January and climbing to 87.5% by April.
-            The area chart shows remarkable consistency in this category, with
-            no month dipping below 80% excellence.
+            This bar chart actually represents guest satisfaction with staff friendliness at the Cottages over the 1st four months. 
+
           </p>
           <p>
-            What's particularly interesting is the relationship between
-            friendliness scores and other service metrics. When we see spikes in
-            friendliness ratings (particularly in February and April),
-            corresponding lifts appear in restaurant service and activity
-            coordination ratings, suggesting friendly staff positively influence
-            perception of other services.
+            <ul><li><strong>March’s sharp rise: </strong>Likely reflects positive changes—perhaps staff training, improved engagement, or better hospitality practices.
+            </li><li><strong>Overall strong satisfaction: </strong>The majority of guests consistently rated staff as friendly, with Excellent ratings increasing over time.
+            </li></ul>
           </p>
         </div>
       </section>
@@ -408,20 +413,18 @@
           />
         </div>
         <div class="viz-description">
-          <h4>What This Shows</h4>
+          <h4>Breakdown of satisfaction</h4>
           <p>
-            Bed Comfort leads all categories with a perfect 5.0 weighted score,
-            followed closely by Bathroom Cleanliness at 4.9. These physical
-            comfort metrics consistently outperform other aspects of the guest
-            experience.
+            <ul><li><strong>Room Cleanliness: </strong>This service received the highest percentage of Excellent ratings, meaning most guests were highly satisfied. Very Good and Good ratings were also strong, showing overall cleanliness was well-maintained.
+            </li><li><strong>Staff Friendliness: </strong>Also ranked highly, with Excellent ratings consistently high and only a small percentage of Average or Poor responses.
+            </li><li><strong>Entertainment & Extras: </strong>Showed fewer Excellent ratings compared to other services, with more guests ranking it as Good or Average, meaning potential improvements could enhance guest experience.
+            </li></ul>
           </p>
           <p>
-            At the other end, Pricing Satisfaction ranks lowest (3.8), though
-            showing steady improvement from its January position. Wi-Fi, despite
-            its improvements, still ranks in the bottom third of categories
-            (4.1), indicating room for continued enhancement. The middle tier
-            contains most of our activity and dining-related services, all
-            scoring between 4.3-4.6.
+            <ul><li>Room cleanliness and staff friendliness stand out as the best-rated services
+            </li><li>Food quality is solid but could be refined to push more ratings into the Excellent category.
+            </li><li>Wi-Fi and entertainment show areas where guests had mixed experiences—enhancing these could boost satisfaction.
+            </li></ul>
           </p>
         </div>
       </section>
@@ -443,18 +446,21 @@
         <div class="viz-description">
           <h4>What This Shows</h4>
           <p>
-            The forecast model predicts continued growth in Wi-Fi satisfaction
-            if current trends persist. Based on the April trajectory, we can
-            expect 'Excellent' ratings to reach approximately 42-45% by July,
-            which would place Wi-Fi in our top half of service categories.
+            This image represents <strong>Prophet Predictive Analytics</strong>, which is used to forecast trends based on past data. 
+            The chart likely displays expected future values for a particular metric, such as guest satisfaction, booking rates, or service demand at Hunters Paradise Cottages.
+
           </p>
           <p>
-            The confidence interval (shaded area) shows a range of possible
-            outcomes, with the lower bound suggesting a floor of about 38%
-            'Excellent' ratings even if growth slows slightly. This projection
-            assumes no additional infrastructure investments beyond what's
-            already planned.
+            <ul><li><strong>Historical Data vs. Forecast: </strong>The chart usually includes a line showing past trends and an extended line predicting future values.
+            </li><li><strong>Confidence Intervals: </strong>Shaded regions around the predicted values indicate possible variations—meaning the actual numbers might fluctuate within this range.
+            </li><li><strong>Seasonal Patterns: </strong>If there are recurring spikes or dips, it suggests trends like high-demand periods or seasonal guest satisfaction changes.
+            </li></ul>
           </p>
+          <h4>What this means</h4>
+          <p><ul><li>It helps with strategic planning—by anticipating how guest satisfaction or bookings might evolve, management can prepare improvements ahead of time.
+        </li><li>If predictions show a decline, it signals a need to adjust marketing strategies or service offerings
+        </li><li>If positive trends continue, it’s an opportunity to reinforce what’s already working to sustain growth.
+        </li></ul></p>
         </div>
       </section>
 
@@ -554,6 +560,7 @@
 
     <footer>
       <div class="container">
+        <p>Prepared by Calvince Okomo and Team</p>
         <p>&copy; 2025 Hunters Paradise Cottages | Guest Experience Analysis</p>
         <p>
           Data analyzed from January to April 2025 guest satisfaction surveys
